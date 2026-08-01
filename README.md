@@ -198,8 +198,8 @@ The final schema will be confirmed and implemented during the warehouse-building
 |---|---|
 | Phase 1 — Data Loading & Setup | ✅ Completed |
 | Phase 2 — Data Profiling & Quality Assessment | ✅ Completed |
-| Phase 3 — Data Cleaning & Transformation | 🔄 Next |
-| Phase 4 — Data Warehouse & Star Schema | ⏳ Planned |
+| Phase 3 — Data Cleaning & Transformation | ✅ Completed |
+| Phase 4 — Star Schema & Data Warehouse | 🔄 Next |
 | Phase 5 — Data Enrichment & Analysis | ⏳ Planned |
 | Phase 6 — Power BI Dashboard | ⏳ Planned |
 
