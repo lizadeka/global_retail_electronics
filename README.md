@@ -110,17 +110,60 @@ Each dataset was systematically profiled before transformation.
 
 ---
 
-# 🧹 Phase 2 → Phase 3 Transformation Plan
+# 🧹 Phase 3 — Data Cleaning & Transformation
 
-| Dataset | Transformation |
-|---|---|
-| Customers | Convert birthday to `DATE` |
-| Products | Convert price/cost fields from `TEXT` to `NUMERIC` |
-| Stores | Convert square meters to `NUMERIC` and opening date to `DATE` |
-| Exchange Rates | Convert exchange date and rate to appropriate types |
-| Sales | Convert relevant date and numeric fields |
+The validated staging data was transformed into warehouse-ready tables while keeping the raw staging layer unchanged.
 
-The raw staging tables will remain unchanged while transformations are performed in the warehouse layer.
+### Transformations
+
+- Converted customer birthdays from `TEXT` to `DATE`
+- Converted product unit cost and unit price to `NUMERIC`
+- Converted store size to `NUMERIC`
+- Converted store opening dates to `DATE`
+- Converted exchange dates to `DATE`
+- Converted exchange rates to `NUMERIC`
+- Converted sales line items and quantities to numeric types
+- Converted sales order dates and delivery dates to `DATE`
+- Preserved valid `NULL` values and business exceptions
+
+### Warehouse Tables
+
+| Table | Records |
+|---|---:|
+| `warehouse.dim_customer` | 15,266 |
+| `warehouse.dim_product` | 2,517 |
+| `warehouse.dim_store` | 67 |
+| `warehouse.dim_exchange_rate` | 11,215 |
+| `warehouse.fact_sales` | 62,884 |
+
+### Validation
+
+All warehouse tables returned the expected record counts.
+
+Relationship validation also confirmed:
+
+```text
+Missing Customers       → 0
+Missing Products        → 0
+Missing Stores          → 0
+Missing Exchange Rates  → 0
+```
+
+**Status: ✅ Completed**
+
+---
+
+# 🧹 Phase 3 — Data Transformation Summary
+
+| Dataset | Transformation | Status |
+|---|---|---|
+| Customers | Convert `birthday` from `TEXT` to `DATE` | ✅ Completed |
+| Products | Convert price/cost fields from `TEXT` to `NUMERIC` | ✅ Completed |
+| Stores | Convert `square_meters` to `NUMERIC` and `open_date` to `DATE` | ✅ Completed |
+| Exchange Rates | Convert `exchange_date` to `DATE` and `exchange_rate` to `NUMERIC` | ✅ Completed |
+| Sales | Convert relevant date and numeric fields | ✅ Completed |
+
+The raw staging tables were preserved unchanged, while the cleaned and transformed data was created in the `warehouse` layer.
 
 ---
 
