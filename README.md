@@ -124,22 +124,28 @@ The raw staging tables will remain unchanged while transformations are performed
 
 ---
 
-# ⭐ Planned Data Warehouse
+# ⭐ Planned Star Schema
 
-The project will use a **star-schema architecture**:
+The final warehouse will use a **star-schema design**, with Sales serving as the central fact table and descriptive entities represented as dimensions.
 
 ```text
-                 dim_customer
-                      │
-                      │
-dim_date ─────── fact_sales ─────── dim_product
-                      │
-                      │
-                 dim_store
-                      │
-                      │
-              dim_exchange_rate
+                    ┌──────────────────┐
+                    │   dim_customer   │
+                    └────────┬─────────┘
+                             │
+                             │
+┌──────────────┐      ┌──────▼───────┐      ┌──────────────┐
+│   dim_date   │──────│  fact_sales  │──────│  dim_product │
+└──────────────┘      └──────┬───────┘      └──────────────┘
+                             │
+                    ┌────────┴─────────┐
+                    │                  │
+             ┌──────▼──────┐   ┌──────▼──────────────┐
+             │  dim_store  │   │ dim_exchange_rate   │
+             └─────────────┘   └─────────────────────┘
 ```
+
+The final schema will be confirmed and implemented during the warehouse-building phase.
 
 ---
 
