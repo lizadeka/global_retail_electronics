@@ -244,18 +244,6 @@ maven-electronics-global-retail/
 
 ---
 
-## 📌 Current Status
-
-**Phase 1 and Phase 2 completed.**
-
-The raw datasets have been loaded, profiled, validated, and documented. Data-quality issues, valid business exceptions, table grain, keys, and transformation requirements have been identified.
-
-### Next: Phase 3 — Data Cleaning & Transformation
-
-The next stage will transform the validated staging data into **warehouse-ready tables** while preserving the original raw data.
-
----
-
 ## 👩‍💻 Project Focus
 
 This project demonstrates an end-to-end analytics workflow:
