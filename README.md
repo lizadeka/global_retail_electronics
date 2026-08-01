@@ -167,6 +167,22 @@ The raw staging tables were preserved unchanged, while the cleaned and transform
 
 ---
 
+# ⭐ Phase 4 — Star Schema & Data Warehouse
+
+The cleaned warehouse tables are now being structured into a formal **star-schema architecture** to support analytical reporting and Power BI.
+
+## 📅 Date Dimension
+
+Created a dedicated `dim_date` table using the Sales date range:
+
+- Start date: **2016-01-01**
+- End date: **2021-02-20**
+- Total calendar records: **1,878**
+- Includes year, quarter, month, week, day, day name, and weekend attributes
+
+The Date Dimension will allow sales to be analyzed consistently across different time periods.
+
+
 # ⭐ Planned Star Schema
 
 The final warehouse will use a **star-schema design**, with Sales serving as the central fact table and descriptive entities represented as dimensions.
