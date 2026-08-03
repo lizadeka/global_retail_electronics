@@ -110,31 +110,63 @@ Each dataset was systematically profiled before transformation.
 
 ---
 
-# 🧹 Phase 3 — Data Cleaning & Transformation
+# 🔄 Phase 3 — Data Transformation
 
-The validated staging data was transformed into warehouse-ready tables while keeping the raw staging layer unchanged.
+The cleaned staging data was transformed into warehouse-ready tables while keeping the original staging layer unchanged.
 
-### Transformations
+## 🛠️ Transformations Performed
 
-- Converted customer birthdays from `TEXT` to `DATE`
-- Converted product unit cost and unit price to `NUMERIC`
-- Converted store size to `NUMERIC`
-- Converted store opening dates to `DATE`
-- Converted exchange dates to `DATE`
-- Converted exchange rates to `NUMERIC`
-- Converted sales line items and quantities to numeric types
-- Converted sales order dates and delivery dates to `DATE`
-- Preserved valid `NULL` values and business exceptions
+### Customers
+- Converted `birthday` from `TEXT` to `DATE`.
+- Preserved the original customer records in the staging layer.
 
-### Warehouse Tables
+### Products
+- Converted `unit_price_usd` and `unit_cost_usd` from `TEXT` to `NUMERIC(12,2)`.
+- Removed currency symbols (`$`), spaces, and thousands separators (`,`) before conversion.
+- Validated **2,517 product records**.
+- Confirmed no missing or non-positive prices/costs.
+
+### Stores
+- Converted `square_meters` from `TEXT` to `NUMERIC`.
+- Converted `open_date` from `TEXT` to `DATE`.
+- Preserved valid zero values and NULLs where applicable.
+
+### Exchange Rates
+- Converted `exchange_date` from `TEXT` to `DATE`.
+- Converted `exchange_rate` from `TEXT` to `NUMERIC`.
+- Validated **11,215 exchange-rate records**.
+
+### Sales
+- Converted relevant date and numeric fields into appropriate warehouse-ready types.
+- Converted `order_date` and `delivery_date` to `DATE`.
+- Converted numeric fields such as `line_item` and `quantity` to appropriate numeric types.
+- Preserved valid NULL delivery dates rather than introducing artificial values.
+- Added `date_key` later in the warehouse layer to connect Sales with `dim_date`.
+
+## 🏗️ Warehouse Layer
+
+The transformed data was loaded into the following warehouse tables:
 
 | Table | Records |
 |---|---:|
-| `warehouse.dim_customer` | 15,266 |
-| `warehouse.dim_product` | 2,517 |
-| `warehouse.dim_store` | 67 |
-| `warehouse.dim_exchange_rate` | 11,215 |
-| `warehouse.fact_sales` | 62,884 |
+| `dim_customer` | 15,266 |
+| `dim_product` | 2,517 |
+| `dim_store` | 67 |
+| `dim_exchange_rate` | 11,215 |
+| `fact_sales` | 62,884 |
+
+## 🔍 Data Integrity
+
+The transformed warehouse data was validated for:
+
+- Appropriate data types
+- Missing values
+- Invalid numeric values
+- Date ranges
+- Key consistency
+- Record counts
+
+The original raw staging tables were retained unchanged to preserve the raw source data and support traceability.
 
 ### Validation
 
@@ -148,22 +180,6 @@ Missing Products        → 0
 Missing Stores          → 0
 Missing Exchange Rates  → 0
 ```
-
-**Status: ✅ Completed**
-
----
-
-# 🧹 Phase 3 — Data Transformation Summary
-
-| Dataset | Transformation | Status |
-|---|---|---|
-| Customers | Convert `birthday` from `TEXT` to `DATE` | ✅ Completed |
-| Products | Convert price/cost fields from `TEXT` to `NUMERIC` | ✅ Completed |
-| Stores | Convert `square_meters` to `NUMERIC` and `open_date` to `DATE` | ✅ Completed |
-| Exchange Rates | Convert `exchange_date` to `DATE` and `exchange_rate` to `NUMERIC` | ✅ Completed |
-| Sales | Convert relevant date and numeric fields | ✅ Completed |
-
-The raw staging tables were preserved unchanged, while the cleaned and transformed data was created in the `warehouse` layer.
 
 ---
 
