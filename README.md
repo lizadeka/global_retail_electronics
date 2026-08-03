@@ -270,6 +270,148 @@ dim_date ───────────► fact_sales ◄──────�
 ```
 ---
 
+# 📊 Phase 5 — Analytics Layer & Business Analysis
+
+With the warehouse layer completed, the next stage focused on analyzing sales performance and identifying the key drivers behind Maven Electronics' revenue decline.
+
+The analysis was performed using the warehouse tables in PostgreSQL, and the validated findings were then organized into reusable analytical views within the `analytics` schema.
+
+---
+
+## 🔍 5.1 Overall Sales Performance
+
+Established baseline sales KPIs across the complete sales dataset:
+
+- **Total Revenue:** $55.76M
+- **Total Units Sold:** 197,757
+- **Total Orders:** 26,326
+- **Total Customers:** 11,887
+- **Products Sold:** 2,492
+- **Average Order Value:** $2,117.89
+
+These metrics provided the baseline for subsequent performance analysis.
+
+---
+
+## 📈 5.2 Yearly Sales Trend
+
+Analyzed revenue, units sold, orders, customers, Average Order Value (AOV), and orders per customer across years.
+
+The analysis identified **2019 as the peak sales year**, followed by a significant decline in 2020.
+
+### 2019 → 2020 Change
+
+| Metric | 2019 | 2020 | Change |
+|---|---:|---:|---:|
+| Revenue | $18.26M | $9.29M | **-49.1%** |
+| Orders | 9,083 | 4,635 | **-49.0%** |
+| Units Sold | 68,440 | 34,463 | **-49.6%** |
+| Active Customers | 6,497 | 3,868 | **-40.5%** |
+| Average Order Value | $2,010.83 | $2,005.31 | **-0.3%** |
+| Orders per Customer | 1.40 | 1.20 | **-14.3%** |
+
+The results indicate that the revenue decline was primarily **volume-driven rather than price- or basket-value-driven**.
+
+---
+
+## 🛒 5.3 Sales Channel Analysis
+
+Compared Online and Physical sales performance across years.
+
+The 2019 → 2020 decline affected both channels:
+
+- **Online revenue declined by approximately 47.0%**
+- **Physical revenue declined by approximately 49.7%**
+
+This indicates that the decline was **broad-based rather than isolated to a single sales channel**.
+
+Physical stores contributed the larger absolute revenue decline due to their larger overall revenue base.
+
+---
+
+## 🌍 5.4 Country Analysis
+
+Analyzed physical-store revenue performance across eight countries while treating `Online` separately as a sales channel.
+
+Key finding:
+
+- The **United States** generated the largest absolute revenue decline from 2019 to 2020.
+- U.S. revenue declined from approximately **$7.85M to $4.15M**, a reduction of approximately **$3.69M**.
+- All physical markets experienced revenue declines during 2020.
+
+This indicated that the decline was geographically broad rather than concentrated in a single market.
+
+---
+
+## 📦 5.5 Product Category Analysis
+
+Analyzed revenue, units sold, orders, and customers across eight product categories.
+
+Key findings:
+
+- **Computers** generated the largest absolute revenue decline, falling from approximately **$6.96M to $3.67M**.
+- **Home Appliances** experienced one of the largest percentage declines, at approximately **59%**.
+- **Audio** also experienced a significant decline of approximately **57%**.
+- Every product category experienced a decline in revenue and unit volume during 2020.
+
+Computers also recorded the largest absolute reduction in units sold, declining by approximately **8,262 units**.
+
+---
+
+## 👥 5.6 Customer Activity Analysis
+
+Analyzed active customers, orders, units sold, and purchase frequency by year.
+
+The analysis showed:
+
+- Active customers declined from **6,497 in 2019 to 3,868 in 2020**.
+- Orders per customer declined from **1.40 to 1.20**.
+- This indicates that the reduction in orders was associated with both:
+  - A smaller active customer base
+  - Lower purchase frequency among active customers
+
+---
+
+# 🏗️ 5.7 Analytics Views
+
+The validated analysis was organized into reusable PostgreSQL views within the `analytics` schema.
+
+| Analytical View | Purpose |
+|---|---|
+| `analytics.sales_yearly` | Yearly revenue and sales performance |
+| `analytics.sales_channel` | Online vs Physical channel performance |
+| `analytics.sales_category` | Product category performance |
+| `analytics.sales_country` | Physical market/country performance |
+| `analytics.customer_activity` | Customer activity and purchase frequency |
+
+These views provide a structured analytical layer for SQL-based investigation and documentation while preserving the detailed warehouse tables for downstream BI analysis.
+
+---
+
+# 🎯 5.8 Key Business Finding
+
+The analysis indicates that Maven Electronics' major revenue decline in 2020 was primarily **volume-driven**.
+
+Revenue declined by approximately **49.1%**, while:
+
+- Orders declined by approximately **49.0%**
+- Units sold declined by approximately **49.6%**
+- Active customers declined by approximately **40.5%**
+- Orders per customer declined by approximately **14.3%**
+- Average Order Value declined by only **0.3%**
+
+The decline was broad-based across **sales channels, physical markets, and product categories**, suggesting that the primary issue was a significant reduction in sales activity rather than a major deterioration in order value.
+
+---
+
+## ✅ Phase 5 Status
+
+**Completed**
+
+The PostgreSQL analytics layer and initial business analysis are complete. The validated findings will be carried forward into the Business Intelligence/dashboard stage.
+
+---
+
 # 🗺️ Project Roadmap
 
 | Phase | Status |
@@ -278,7 +420,7 @@ dim_date ───────────► fact_sales ◄──────�
 | Phase 2 — Data Profiling & Quality Assessment | ✅ Completed |
 | Phase 3 — Data Cleaning & Transformation | ✅ Completed |
 | Phase 4 — Star Schema & Data Warehouse | ✅ Completed |
-| Phase 5 — Data Enrichment & Analysis | ⏳ Planned |
+| Phase 5 — Data Enrichment & Analysis | ✅ Completed |
 | Phase 6 — Power BI Dashboard | ⏳ Planned |
 
 ---
