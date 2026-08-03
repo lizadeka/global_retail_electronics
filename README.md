@@ -173,12 +173,44 @@ The cleaned warehouse tables were structured into a **star schema** to support a
 
 ## 📅 Date Dimension
 
-Created a dedicated `warehouse.dim_date` table using the full Sales date range:
+Created a dedicated `warehouse.dim_date` table to provide a consistent calendar structure for time-based analysis.
+
+The table was generated from the minimum and maximum Sales dates:
 
 - **Start date:** 2016-01-01
 - **End date:** 2021-02-20
 - **Total dates:** 1,878
-- Includes year, quarter, month, week, day, day name, and weekend attributes
+
+### Date Attributes
+
+The Date Dimension contains:
+
+| Column | Purpose |
+|---|---|
+| `date_key` | Unique warehouse key in `YYYYMMDD` format |
+| `full_date` | Actual calendar date |
+| `year` | Year-level analysis |
+| `quarter` | Quarterly analysis |
+| `month` | Numeric month for sorting and analysis |
+| `month_name` | Month name for reporting |
+| `week_of_year` | Weekly analysis |
+| `day_of_month` | Day-level analysis |
+| `day_name` | Day-of-week analysis |
+| `is_weekend` | Identifies Saturday and Sunday |
+
+### Why `dim_date` was created
+
+Instead of calculating year, quarter, month, week, and weekday information directly from every Sales record, these calendar attributes are stored once in a reusable Date Dimension.
+
+The `date_key` connects the Date Dimension to the Sales fact table:
+
+```text
+dim_date
+   │
+   │ date_key
+   ▼
+fact_sales
+```
 
 ## 🔑 Primary Keys
 
