@@ -169,43 +169,57 @@ The raw staging tables were preserved unchanged, while the cleaned and transform
 
 # ⭐ Phase 4 — Star Schema & Data Warehouse
 
-The cleaned warehouse tables are now being structured into a formal **star-schema architecture** to support analytical reporting and Power BI.
+The cleaned warehouse tables were structured into a **star schema** to support analytical reporting and Power BI.
 
 ## 📅 Date Dimension
 
-Created a dedicated `dim_date` table using the Sales date range:
+Created a dedicated `warehouse.dim_date` table using the full Sales date range:
 
-- Start date: **2016-01-01**
-- End date: **2021-02-20**
-- Total calendar records: **1,878**
+- **Start date:** 2016-01-01
+- **End date:** 2021-02-20
+- **Total dates:** 1,878
 - Includes year, quarter, month, week, day, day name, and weekend attributes
 
-The Date Dimension will allow sales to be analyzed consistently across different time periods.
+## 🔑 Primary Keys
 
+Primary keys were added to all dimension tables:
 
-# ⭐ Planned Star Schema
+| Dimension | Primary Key |
+|---|---|
+| `dim_customer` | `customer_key` |
+| `dim_product` | `product_key` |
+| `dim_store` | `store_key` |
+| `dim_date` | `date_key` |
+| `dim_exchange_rate` | `exchange_date + currency_code` |
 
-The final warehouse will use a **star-schema design**, with Sales serving as the central fact table and descriptive entities represented as dimensions.
+## 🔗 Fact Table Relationships
+
+Foreign keys were added to `fact_sales` to establish relationships with the dimension tables:
+
+| Fact Column | Dimension |
+|---|---|
+| `customer_key` | `dim_customer.customer_key` |
+| `product_key` | `dim_product.product_key` |
+| `store_key` | `dim_store.store_key` |
+| `date_key` | `dim_date.date_key` |
+| `order_date + currency_code` | `dim_exchange_rate.exchange_date + currency_code` |
+
+## ⭐ Final Star Schema
 
 ```text
-                    ┌──────────────────┐
-                    │   dim_customer   │
-                    └────────┬─────────┘
-                             │
-                             │
-┌──────────────┐      ┌──────▼───────┐      ┌──────────────┐
-│   dim_date   │──────│  fact_sales  │──────│  dim_product │
-└──────────────┘      └──────┬───────┘      └──────────────┘
-                             │
-                    ┌────────┴─────────┐
-                    │                  │
-             ┌──────▼──────┐   ┌──────▼──────────────┐
-             │  dim_store  │   │ dim_exchange_rate   │
-             └─────────────┘   └─────────────────────┘
+                    dim_customer
+                         │
+                         │
+                    ┌────▼────┐
+dim_date ───────────► fact_sales ◄────────── dim_product
+                    └────┬────┘
+                         │
+                  ┌──────┴──────┐
+                  │             │
+             dim_store   dim_exchange_rate
+
+
 ```
-
-The final schema will be confirmed and implemented during the warehouse-building phase.
-
 ---
 
 # 🗺️ Project Roadmap
@@ -215,7 +229,7 @@ The final schema will be confirmed and implemented during the warehouse-building
 | Phase 1 — Data Loading & Setup | ✅ Completed |
 | Phase 2 — Data Profiling & Quality Assessment | ✅ Completed |
 | Phase 3 — Data Cleaning & Transformation | ✅ Completed |
-| Phase 4 — Star Schema & Data Warehouse | 🔄 Next |
+| Phase 4 — Star Schema & Data Warehouse | ✅ Completed |
 | Phase 5 — Data Enrichment & Analysis | ⏳ Planned |
 | Phase 6 — Power BI Dashboard | ⏳ Planned |
 
