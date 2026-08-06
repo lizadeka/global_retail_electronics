@@ -292,7 +292,6 @@ Established baseline sales KPIs across the complete sales dataset:
 
 These metrics provided the baseline for subsequent performance analysis.
 
----
 
 ### 5.2 Yearly Sales Trend
 
@@ -313,7 +312,6 @@ The analysis identified **2019 as the peak sales year**, followed by a significa
 
 The results indicate that the revenue decline was primarily **volume-driven rather than price- or basket-value-driven**.
 
----
 
 ### 5.3 Sales Channel Analysis
 
@@ -328,9 +326,8 @@ This indicates that the decline was **broad-based rather than isolated to a sing
 
 Physical stores contributed the larger absolute revenue decline due to their larger overall revenue base.
 
----
 
-## 🌍 5.4 Country Analysis
+### 5.4 Country Analysis
 
 Analyzed physical-store revenue performance across eight countries while treating `Online` separately as a sales channel.
 
@@ -342,9 +339,8 @@ Key finding:
 
 This indicated that the decline was geographically broad rather than concentrated in a single market.
 
----
 
-## 📦 5.5 Product Category Analysis
+### 5.5 Product Category Analysis
 
 Analyzed revenue, units sold, orders, and customers across eight product categories.
 
@@ -357,9 +353,7 @@ Key findings:
 
 Computers also recorded the largest absolute reduction in units sold, declining by approximately **8,262 units**.
 
----
-
-## 👥 5.6 Customer Activity Analysis
+### 5.6 Customer Activity Analysis
 
 Analyzed active customers, orders, units sold, and purchase frequency by year.
 
@@ -371,9 +365,7 @@ The analysis showed:
   - A smaller active customer base
   - Lower purchase frequency among active customers
 
----
-
-# 🏗️ 5.7 Analytics Views
+### Analytics Views
 
 The validated analysis was organized into reusable PostgreSQL views within the `analytics` schema.
 
@@ -387,9 +379,7 @@ The validated analysis was organized into reusable PostgreSQL views within the `
 
 These views provide a structured analytical layer for SQL-based investigation and documentation while preserving the detailed warehouse tables for downstream BI analysis.
 
----
-
-# 🎯 5.8 Key Business Finding
+### 5.8 Key Business Finding
 
 The analysis indicates that Maven Electronics' major revenue decline in 2020 was primarily **volume-driven**.
 
@@ -405,17 +395,9 @@ The decline was broad-based across **sales channels, physical markets, and produ
 
 ---
 
-## ✅ Phase 5 Status
+## Phase 6 — Power BI Dashboard
 
-**Completed**
-
-The PostgreSQL analytics layer and initial business analysis are complete. The validated findings will be carried forward into the Business Intelligence/dashboard stage.
-
----
-
-# Phase 6 — Power BI Dashboard
-
-## Power BI Dashboard
+### Power BI Dashboard
 
 ### Page 1 — Sales Performance
 **Business Question:** Where is the business generating revenue?
@@ -426,7 +408,7 @@ Provides an executive overview of sales performance across products, markets, sa
 - **Visuals:** Revenue by Product Category, Revenue by Continent, Revenue by Sales Channel, Revenue Trend by Year
 - **Filters:** Year, Country
 
----
+
 
 ### Page 2 — Business Performance
 **Business Question:** How are revenue, profitability, orders, and customer volume changing over time?
@@ -438,7 +420,7 @@ Analyzes business performance from **2016–2021** using interactive metric sele
 - **Additional Analysis:** Yearly Revenue & Profit Performance
 - Dynamic visuals allow multiple metrics to be explored without duplicating charts.
 
----
+
 
 ### Page 3 — Customer & Product Insights
 **Business Question:** Who are the customers, and which products, categories, and brands drive performance?
@@ -452,7 +434,7 @@ Combines customer, product, and profitability analysis.
 
 The matrix allows users to drill from brand-level performance into categories and individual products.
 
----
+
 
 ### Page 4 — Monthly Performance & Trends
 **Business Question:** How does business performance change throughout the year?
@@ -466,9 +448,7 @@ Examines monthly sales patterns, customer spending, order activity, and delivery
 This page highlights seasonal patterns, peak-performing periods, and operational trends.
 
 
----
-
-# 🗺️ Project Roadmap
+## Project Roadmap
 
 | Phase | Status |
 |---|---|
@@ -481,7 +461,7 @@ This page highlights seasonal patterns, peak-performing periods, and operational
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 maven-electronics-global-retail/
