@@ -350,157 +350,208 @@ The measures and calculated fields were created to answer business questions rat
 
 ---
 
-## Power BI Dashboard & Report Structure
+## Power BI Dashboard
 
-The final Power BI report was designed as a five-page interactive business analysis report. Each page focuses on a specific business question and builds toward an overall management view.
+The Power BI dashboard was designed to provide an interactive view of sales, customer, product, channel, and profitability performance for **2016–2021**.
+
+The dashboard is organized into five pages, with each page answering a specific business question while allowing users to explore the data through interactive filters and metric selectors.
+
+---
 
 ### Page 1 — Sales Performance
 
 **Business Question:**  
-*Where is the business generating revenue?*
+> Where is the business generating revenue?
+
+This page provides an executive-level overview of sales performance and highlights the main revenue sources across products, markets, sales channels, and time.
 
 #### KPIs
-
 - Total Revenue
 - Total Orders
 - Total Customers
 - Average Order Value
 
 #### Visuals
-
 - Revenue by Product Category
-- Revenue by Country
+- Revenue by Continent
 - Revenue by Sales Channel
 - Revenue Trend by Year
 
-#### Filter
-
+#### Filters
 - Year
+- Country
 
-This page provides an overview of the company's sales performance and highlights the main revenue sources across products, markets, sales channels, and time.
+The **Year** and **Country** slicers are page-level filters and apply across the dashboard visuals on this page.
 
 ---
 
-### Page 2 — Revenue & Profit Performance
+### Page 2 — Business Performance
 
 **Business Question:**  
-*What changed after the 2019 peak?*
+> How are revenue, profitability, orders, and customer volume changing over time?
 
-#### KPIs
+This page focuses on the company's financial and business performance from **2016–2021**. Dynamic metric selectors allow multiple related metrics to be analyzed within the same visual without adding separate charts for each measure.
 
-- Total Revenue
-- Total Orders
-- Total Profit
-- Revenue Decline %
+#### Dynamic Financial Performance Trend
 
-#### Visuals
+A line chart allows users to switch between:
 
-- Yearly Revenue & Profit Trend
-- Revenue & Profit: 2019 vs. 2020
-- Yearly Orders & Customers Trend
-- Average Order Value Trend
+- Revenue
+- Profit
+- Profit Margin
 
-#### Filter
+**Metric selector:**
 
-- Year
+`Revenue | Profit | Profit Margin`
 
-This page focuses on the company's revenue decline and compares revenue with profitability to understand the scale and persistence of the downturn.
+The selected metric is displayed dynamically on the yearly trend chart.
+
+#### Dynamic Business Volume Trend
+
+A second line chart allows users to switch between:
+
+- Orders
+- Customers
+
+**Metric selector:**
+
+`Orders | Customers`
+
+This allows users to compare business volume trends over time while keeping the dashboard layout compact.
+
+#### Other Page 2 Analysis
+
+- Yearly Revenue & Profit Performance
+- Additional sales/business performance analysis
+
+The dynamic metric approach reduces visual duplication while allowing users to explore multiple performance measures interactively.
 
 ---
 
 ### Page 3 — Customer & Product Insights
 
 **Business Question:**  
-*Who are our customers, and what drives sales?*
+> Who are the customers, and which products, categories, and brands are driving business performance?
+
+This page combines customer analysis with detailed product and profitability analysis.
 
 #### KPIs
-
 - Total Customers
 - Top Brand
 - Top Product Category
 - Average Order Value
 
 #### Visuals
-
 - Customers by Country
-- Top 10 Brands by Revenue
-- Units Sold by Product Category
+- Average Revenue per Customer by Country
 - Average Order Value by Sales Channel
+- Revenue & Profit Performance Matrix
 
-#### Filter
+#### Dynamic Revenue & Profit Performance Matrix
 
-- Year
+The matrix provides hierarchical analysis across:
 
-This page examines customer distribution, brand contribution, product demand, and differences in order value across sales channels.
+**Brand → Category → Product**
+
+Users can switch the level of analysis using the interactive selector.
+
+The matrix evaluates:
+
+- Revenue
+- Profit
+- Profit Margin %
+- Orders
+- Average Order Value
+
+This allows users to move from high-level brand performance into category and individual product performance without requiring separate visuals for each level.
 
 ---
 
-### Page 4 — Trends & Operations
+### Page 4 — Monthly Performance & Trends
 
 **Business Question:**  
-*When does the business perform, and how is the operation performing?*
+> How does business performance change throughout the year?
+
+This page focuses on monthly performance patterns and operational trends across the **2016–2021** period.
 
 #### KPIs
-
-- Average Delivery Days — **4.53 days**
-- Peak Revenue Month — **February**
-- Peak Order Month — **December**
-- Peak AOV Month — **April**
+- Peak Revenue Month
+- Peak Order Volume Month
+- Peak Average Order Value Month
+- Average Delivery Time
 
 #### Visuals
-
 - Monthly Revenue Trend
 - Monthly Order Volume Trend
+- Monthly Average Order Value Trend
 - Average Delivery Time Trend
-- Monthly Average Order Value
 
 #### Filter
+- Year + Quarter
+- Country
 
-- Year
-
-This page focuses on monthly patterns, seasonality, customer spending behavior, and delivery performance.
+The page helps identify seasonal patterns, peak-performing months, changes in order activity, customer spending behavior, and delivery performance.
 
 ---
 
-### Page 5 — Executive Insights
+### Page 5 — Key Business Insights
 
 **Business Question:**  
-*What should management take away from the analysis?*
+> What are the most important findings and business implications from the analysis?
 
-#### Headline Cards
+This page consolidates the key findings from Pages 1–4 into an executive-level summary, focusing on sales performance, profitability, customers, products, channels, and operational trends.
 
-- Revenue Decline — **-49.11%**
-- Profit Decline — **approximately -49.5%**
-- In-Store Revenue — **~$44M**
-- Average Delivery Time — **4.53 days**
+#### Key Insights
 
-#### Insight Sections
+- **Sales & profitability:** Revenue and profit trends reveal periods of stronger and weaker business performance, while profit margin highlights changes in profitability beyond sales growth.
+- **Product performance:** Brand, category, and product analysis identifies the key revenue and profit contributors and highlights differences between high-revenue and high-margin products.
+- **Customer & geography:** Customer distribution and average revenue per customer reveal differences across markets and help identify higher-value customer locations.
+- **Sales channels:** Differences in average order value across channels provide insight into customer purchasing behavior and channel value.
+- **Customer & order trends:** Changes in customer and order volumes help explain movements in overall sales performance.
+- **Seasonality & operations:** Monthly trends highlight variations in revenue, order activity, AOV, and delivery performance throughout the year.
 
-**Revenue & Profit Decline**
-- Revenue fell sharply after the 2019 peak.
-- Profit declined from approximately $10.7M in 2019 to $5.4M in 2020.
+#### Business Implications
 
-**Sales Channel**
-- In-store revenue is approximately $44M compared with $11M online.
-- AOV is relatively similar across channels.
+The analysis supports decisions around **product and brand prioritization, market performance, channel strategy, customer value, profitability management, seasonal planning, and operational improvement**.
 
-**Customers & Products**
-- Key countries, brands, and product categories contribute significantly to overall performance.
+> **Overall takeaway:** Business performance should be evaluated using revenue, profitability, customer value, product performance, channel performance, and operational efficiency together rather than relying on revenue alone.
 
-**Seasonality & Operations**
-- February has the highest revenue.
-- December has the highest order volume.
-- April has the highest AOV.
-- Average delivery time is 4.53 days.
+---
 
-#### Management Priorities
+## Dashboard Interactivity
 
-1. Investigate the drivers of the revenue decline.
-2. Identify opportunities to strengthen online sales.
-3. Focus on high-performing products, brands, and markets.
-4. Plan around seasonal demand patterns.
-5. Monitor delivery performance over time.
+The dashboard includes interactive controls to allow users to explore the data from different perspectives.
 
+### Page-Level Filters
+
+- Year
+- Country
+- Year + Quarter on applicable pages
+
+### Dynamic Metric Selectors
+
+The Power BI dashboard uses **Field Parameters** to allow users to switch the metric displayed in selected trend charts.
+
+Examples include:
+
+**Financial Performance**
+- Revenue
+- Profit
+- Profit Margin
+
+**Business Volume**
+- Orders
+- Customers
+
+This approach allows multiple metrics to be analyzed within a single visual while keeping the dashboard concise and reducing unnecessary visual duplication.
+
+### Hierarchical Product Analysis
+
+The Page 3 performance matrix uses a dynamic hierarchy:
+
+**Brand → Category → Product**
+
+This enables users to move between different levels of product analysis while evaluating revenue, profit, margin, orders, and average order value.
 ---
 
 ### Report Design Approach
