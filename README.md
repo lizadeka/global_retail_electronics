@@ -1,8 +1,10 @@
 # Maven Electronics — Global Retail Analytics
 
-## 📌 Overview
+### Overview
 
-**Maven Electronics** is a global retailer selling computers, cell phones, and TVs through online and physical stores. The business has experienced a **decline in revenue since 2020** and needs a data-driven solution to understand sales, customers, products, stores, and currency trends.
+Maven Electronics is a global electronics retailer selling computers, cell phones, TVs, and cameras through online and physical stores. As a Data Analyst, I analyzed the company's sales and operational data to investigate the decline in revenue following its 2019 peak.
+
+Using the provided datasets, I built a structured data model and interactive Power BI dashboard to analyze revenue, profit, customers, products, sales channels, seasonal trends, and delivery performance. The goal was to identify key business trends, understand the factors associated with the revenue decline, and provide actionable recommendations for management.
 
 This project uses **PostgreSQL for data profiling, cleaning, transformation, and data warehouse development**, followed by **Power BI for interactive business reporting**.
 
@@ -15,7 +17,7 @@ Raw CSVs → PostgreSQL Staging → Data Profiling
 
 ---
 
-## 🛠️ Tools & Technologies
+### Tools & Technologies
 
 - **PostgreSQL**
 - **SQL**
@@ -24,7 +26,7 @@ Raw CSVs → PostgreSQL Staging → Data Profiling
 
 ---
 
-## 📂 Dataset
+### Dataset
 
 The project contains five datasets:
 
@@ -40,7 +42,7 @@ The project contains five datasets:
 
 ---
 
-# 🔹 Phase 1 — Data Loading & Setup
+## Phase 1 — Data Loading & Setup
 
 - Created PostgreSQL staging environment
 - Loaded all five raw CSV datasets
@@ -59,7 +61,7 @@ exchange_rates_raw
 
 ---
 
-# 🔍 Phase 2 — Data Profiling & Quality Assessment
+## Phase 2 — Data Profiling & Quality Assessment
 
 Each dataset was systematically profiled before transformation.
 
@@ -110,40 +112,40 @@ Each dataset was systematically profiled before transformation.
 
 ---
 
-# 🔄 Phase 3 — Data Transformation
+## Phase 3 — Data Transformation
 
 The cleaned staging data was transformed into warehouse-ready tables while keeping the original staging layer unchanged.
 
-## 🛠️ Transformations Performed
+### 🛠️ Transformations Performed
 
-### Customers
+#### Customers
 - Converted `birthday` from `TEXT` to `DATE`.
 - Preserved the original customer records in the staging layer.
 
-### Products
+#### Products
 - Converted `unit_price_usd` and `unit_cost_usd` from `TEXT` to `NUMERIC(12,2)`.
 - Removed currency symbols (`$`), spaces, and thousands separators (`,`) before conversion.
 - Validated **2,517 product records**.
 - Confirmed no missing or non-positive prices/costs.
 
-### Stores
+#### Stores
 - Converted `square_meters` from `TEXT` to `NUMERIC`.
 - Converted `open_date` from `TEXT` to `DATE`.
 - Preserved valid zero values and NULLs where applicable.
 
-### Exchange Rates
+#### Exchange Rates
 - Converted `exchange_date` from `TEXT` to `DATE`.
 - Converted `exchange_rate` from `TEXT` to `NUMERIC`.
 - Validated **11,215 exchange-rate records**.
 
-### Sales
+#### Sales
 - Converted relevant date and numeric fields into appropriate warehouse-ready types.
 - Converted `order_date` and `delivery_date` to `DATE`.
 - Converted numeric fields such as `line_item` and `quantity` to appropriate numeric types.
 - Preserved valid NULL delivery dates rather than introducing artificial values.
 - Added `date_key` later in the warehouse layer to connect Sales with `dim_date`.
 
-## 🏗️ Warehouse Layer
+### Warehouse Layer
 
 The transformed data was loaded into the following warehouse tables:
 
@@ -155,7 +157,7 @@ The transformed data was loaded into the following warehouse tables:
 | `dim_exchange_rate` | 11,215 |
 | `fact_sales` | 62,884 |
 
-## 🔍 Data Integrity
+### Data Integrity
 
 The transformed warehouse data was validated for:
 
@@ -183,11 +185,11 @@ Missing Exchange Rates  → 0
 
 ---
 
-# ⭐ Phase 4 — Star Schema & Data Warehouse
+## Phase 4 — Star Schema & Data Warehouse
 
 The cleaned warehouse tables were structured into a **star schema** to support analytical reporting and Power BI.
 
-## 📅 Date Dimension
+### Date Dimension
 
 Created a dedicated `warehouse.dim_date` table to provide a consistent calendar structure for time-based analysis.
 
@@ -214,7 +216,7 @@ The Date Dimension contains:
 | `day_name` | Day-of-week analysis |
 | `is_weekend` | Identifies Saturday and Sunday |
 
-### Why `dim_date` was created
+### `dim_date` was created :
 
 Instead of calculating year, quarter, month, week, and weekday information directly from every Sales record, these calendar attributes are stored once in a reusable Date Dimension.
 
@@ -228,7 +230,7 @@ dim_date
 fact_sales
 ```
 
-## 🔑 Primary Keys
+### Primary Keys
 
 Primary keys were added to all dimension tables:
 
@@ -240,7 +242,7 @@ Primary keys were added to all dimension tables:
 | `dim_date` | `date_key` |
 | `dim_exchange_rate` | `exchange_date + currency_code` |
 
-## 🔗 Fact Table Relationships
+### Fact Table Relationships
 
 Foreign keys were added to `fact_sales` to establish relationships with the dimension tables:
 
@@ -252,7 +254,7 @@ Foreign keys were added to `fact_sales` to establish relationships with the dime
 | `date_key` | `dim_date.date_key` |
 | `order_date + currency_code` | `dim_exchange_rate.exchange_date + currency_code` |
 
-## ⭐ Final Star Schema
+### Final Star Schema
 
 ```text
                     dim_customer
@@ -270,15 +272,14 @@ dim_date ───────────► fact_sales ◄──────�
 ```
 ---
 
-# 📊 Phase 5 — Analytics Layer & Business Analysis
+## Phase 5 — Analytics Layer & Business Analysis
 
 With the warehouse layer completed, the next stage focused on analyzing sales performance and identifying the key drivers behind Maven Electronics' revenue decline.
 
 The analysis was performed using the warehouse tables in PostgreSQL, and the validated findings were then organized into reusable analytical views within the `analytics` schema.
 
----
 
-## 🔍 5.1 Overall Sales Performance
+### 5.1 Overall Sales Performance
 
 Established baseline sales KPIs across the complete sales dataset:
 
@@ -293,13 +294,13 @@ These metrics provided the baseline for subsequent performance analysis.
 
 ---
 
-## 📈 5.2 Yearly Sales Trend
+### 5.2 Yearly Sales Trend
 
 Analyzed revenue, units sold, orders, customers, Average Order Value (AOV), and orders per customer across years.
 
 The analysis identified **2019 as the peak sales year**, followed by a significant decline in 2020.
 
-### 2019 → 2020 Change
+#### 2019 → 2020 Change
 
 | Metric | 2019 | 2020 | Change |
 |---|---:|---:|---:|
@@ -314,7 +315,7 @@ The results indicate that the revenue decline was primarily **volume-driven rath
 
 ---
 
-## 🛒 5.3 Sales Channel Analysis
+### 5.3 Sales Channel Analysis
 
 Compared Online and Physical sales performance across years.
 
