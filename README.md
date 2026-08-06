@@ -397,8 +397,6 @@ The decline was broad-based across **sales channels, physical markets, and produ
 
 ## Phase 6 — Power BI Dashboard
 
-### Power BI Dashboard
-
 ### Page 1 — Sales Performance
 **Business Question:** Where is the business generating revenue?
 
@@ -447,7 +445,33 @@ Examines monthly sales patterns, customer spending, order activity, and delivery
 
 This page highlights seasonal patterns, peak-performing periods, and operational trends.
 
+---
 
+## Key Business Insights
+
+- **Revenue declined sharply after 2019**, falling by **49.1% in 2020**. The decline was primarily volume-driven, with **orders falling 49.0%** and **units sold falling 49.6%**, while **Average Order Value (AOV) decreased by only 0.3%**.
+
+- **Customer activity weakened significantly**, with active customers declining from **6,497 in 2019 to 3,868 in 2020 (-40.5%)**. Orders per customer also fell from **1.40 to 1.20**, indicating lower purchase frequency.
+
+- **The 2020 decline was broad-based**, affecting all countries, product categories, and both online and physical sales channels rather than being isolated to one area of the business.
+
+- **The United States had the largest absolute revenue impact**, losing approximately **$3.69M** between 2019 and 2020, while Germany experienced one of the largest percentage declines at approximately **59%**.
+
+- **Computers remained the strongest product category**, generating **$19.3M** in revenue, while Home Appliances generated **$10.8M**. Computers also contributed the largest absolute revenue loss during the 2020 decline.
+
+- **In-store sales dominated the business**, generating approximately **$44M** compared with **$11M from online sales**, highlighting an opportunity to strengthen the online channel.
+
+- **Customer value varied across markets**. The United States had the largest customer base at approximately **5K customers**, while average revenue per customer was **$5.2K in the US, $4.7K in Germany, and $4.6K in Italy**.
+
+- **Seasonal patterns were visible across the business**. February recorded the highest monthly revenue at **$6.3M**, December had the highest order volume at **3.5K**, and April recorded the highest AOV at **$2,291.83**.
+
+- **Delivery performance improved over time**, with average delivery time falling from **7.3 days in 2016 to 3.8 days in 2021**, indicating that the revenue decline was not accompanied by worsening delivery efficiency.
+
+### Key Takeaway
+
+The analysis suggests that Maven Electronics' main challenge was a **sharp decline in customer and order volume rather than a significant drop in order value**. The business should therefore focus on customer retention, reactivation, repeat purchases, and order growth while protecting strong product and market segments and reducing dependence on the in-store channel.
+
+---
 ## Project Roadmap
 
 | Phase | Status |
