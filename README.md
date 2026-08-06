@@ -412,6 +412,61 @@ The PostgreSQL analytics layer and initial business analysis are complete. The v
 
 ---
 
+# Phase 6 — Power BI Dashboard
+
+## Power BI Dashboard
+
+### Page 1 — Sales Performance
+**Business Question:** Where is the business generating revenue?
+
+Provides an executive overview of sales performance across products, markets, sales channels, and time.
+
+- **KPIs:** Total Revenue, Total Orders, Total Customers, Average Order Value
+- **Visuals:** Revenue by Product Category, Revenue by Continent, Revenue by Sales Channel, Revenue Trend by Year
+- **Filters:** Year, Country
+
+---
+
+### Page 2 — Business Performance
+**Business Question:** How are revenue, profitability, orders, and customer volume changing over time?
+
+Analyzes business performance from **2016–2021** using interactive metric selectors.
+
+- **Dynamic Financial Trend:** Revenue, Profit, Profit Margin
+- **Dynamic Business Volume Trend:** Orders, Customers
+- **Additional Analysis:** Yearly Revenue & Profit Performance
+- Dynamic visuals allow multiple metrics to be explored without duplicating charts.
+
+---
+
+### Page 3 — Customer & Product Insights
+**Business Question:** Who are the customers, and which products, categories, and brands drive performance?
+
+Combines customer, product, and profitability analysis.
+
+- **KPIs:** Total Customers, Top Brand, Top Category, Average Order Value
+- **Visuals:** Customers by Country, Average Revenue per Customer by Country, AOV by Sales Channel
+- **Dynamic Matrix:** Brand → Category → Product
+- **Metrics:** Revenue, Profit, Profit Margin %, Orders, Average Order Value
+
+The matrix allows users to drill from brand-level performance into categories and individual products.
+
+---
+
+### Page 4 — Monthly Performance & Trends
+**Business Question:** How does business performance change throughout the year?
+
+Examines monthly sales patterns, customer spending, order activity, and delivery performance across **2016–2021**.
+
+- **KPIs:** Peak Revenue Month, Peak Order Volume Month, Peak AOV Month, Average Delivery Time
+- **Visuals:** Monthly Revenue Trend, Monthly Order Volume Trend, Monthly AOV Trend, Delivery Time Trend
+- **Filters:** Year + Quarter, Country
+
+This page highlights seasonal patterns, peak-performing periods, and operational trends.
+
+
+---
+
 # 🗺️ Project Roadmap
 
 | Phase | Status |
@@ -421,7 +476,7 @@ The PostgreSQL analytics layer and initial business analysis are complete. The v
 | Phase 3 — Data Cleaning & Transformation | ✅ Completed |
 | Phase 4 — Star Schema & Data Warehouse | ✅ Completed |
 | Phase 5 — Data Enrichment & Analysis | ✅ Completed |
-| Phase 6 — Power BI Dashboard | ⏳ Planned |
+| Phase 6 — Power BI Dashboard | ✅ Completed |
 
 ---
 
