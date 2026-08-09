@@ -479,6 +479,7 @@ global_retail_electronics/
 │
 ├── README.md
 ├── images
+├── Business insights & Recommendations
 ├── sql/
 │   ├── analysis1.sql
 ├── demo video/
