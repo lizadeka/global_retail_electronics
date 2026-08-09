@@ -42,7 +42,7 @@ The project contains five datasets:
 
 ---
 
-## Phase 1 — Data Loading & Setup
+## Data Loading & Setup
 
 - Created PostgreSQL staging environment
 - Loaded all five raw CSV datasets
@@ -61,7 +61,7 @@ exchange_rates_raw
 
 ---
 
-## Phase 2 — Data Profiling & Quality Assessment
+## Data Profiling & Quality Assessment
 
 Each dataset was systematically profiled before transformation.
 
@@ -112,7 +112,7 @@ Each dataset was systematically profiled before transformation.
 
 ---
 
-## Phase 3 — Data Transformation
+## Data Transformation
 
 The cleaned staging data was transformed into warehouse-ready tables while keeping the original staging layer unchanged.
 
@@ -185,7 +185,7 @@ Missing Exchange Rates  → 0
 
 ---
 
-## Phase 4 — Star Schema & Data Warehouse
+## Star Schema & Data Warehouse
 
 The cleaned warehouse tables were structured into a **star schema** to support analytical reporting and Power BI.
 
@@ -272,7 +272,7 @@ dim_date ───────────► fact_sales ◄──────�
 ```
 ---
 
-## Phase 5 — Analytics Layer & Business Analysis
+## Analytics Layer & Business Analysis
 
 With the warehouse layer completed, the next stage focused on analyzing sales performance and identifying the key drivers behind Maven Electronics' revenue decline.
 
@@ -395,7 +395,7 @@ The decline was broad-based across **sales channels, physical markets, and produ
 
 ---
 
-## Phase 6 — Power BI Dashboard
+## Power BI Dashboard
 
 ### Page 1 — Sales Performance
 **Business Question:** Where is the business generating revenue?
@@ -472,38 +472,19 @@ This page highlights seasonal patterns, peak-performing periods, and operational
 The analysis suggests that Maven Electronics' main challenge was a **sharp decline in customer and order volume rather than a significant drop in order value**. The business should therefore focus on customer retention, reactivation, repeat purchases, and order growth while protecting strong product and market segments and reducing dependence on the in-store channel.
 
 ---
-## Project Roadmap
-
-| Phase | Status |
-|---|---|
-| Phase 1 — Data Loading & Setup | ✅ Completed |
-| Phase 2 — Data Profiling & Quality Assessment | ✅ Completed |
-| Phase 3 — Data Cleaning & Transformation | ✅ Completed |
-| Phase 4 — Star Schema & Data Warehouse | ✅ Completed |
-| Phase 5 — Data Enrichment & Analysis | ✅ Completed |
-| Phase 6 — Power BI Dashboard | ✅ Completed |
-
----
-
 ## Repository Structure
 
 ```text
-maven-electronics-global-retail/
+global_retail_electronics/
 │
 ├── README.md
 ├── data/
 │   └── source/
 ├── sql/
-│   ├── database_setup.sql
-│   ├── staging_tables.sql
-│   ├── data_profiling.sql
-│   ├── data_cleaning.sql
-│   ├── warehouse.sql
-│   └── analytics.sql
-├── documentation/
-│   └── data_quality_report.md
-└── powerbi/
-    └── maven_electronics_report.pbix
+│   ├── analysis1.sql
+├── demo video/
+    └── Global electronics demo
+
 ```
 
 ---
@@ -513,3 +494,19 @@ maven-electronics-global-retail/
 This project demonstrates an end-to-end analytics workflow:
 
 **SQL → Data Quality → Data Transformation → Data Warehouse → Star Schema → Power BI → Business Insights**
+
+---
+
+## 🙏 Acknowledgements
+
+This project was completed from **Maven Analytics Global Electronics Retailer**, providing hands-on experience in SQL-based data analysis and business problem-solving.
+
+---
+
+## About Me  
+👋 Hi, I'm Liza Deka, a data enthusiast.  
+   I enjoy building projects, analyzing real-world data, and sharing insights through GitHub and LinkedIn. 
+   
+  📬 Let’s Connect: <a href="https://www.linkedin.com/in/liza-deka-869473369/">LinkedIn</a>
+
+⭐ If you found this project helpful or interesting, feel free to star the repository!
