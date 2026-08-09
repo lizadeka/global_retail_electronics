@@ -478,8 +478,7 @@ The analysis suggests that Maven Electronics' main challenge was a **sharp decli
 global_retail_electronics/
 │
 ├── README.md
-├── data/
-│   └── source/
+├── images
 ├── sql/
 │   ├── analysis1.sql
 ├── demo video/
@@ -508,5 +507,6 @@ This project was completed from **Maven Analytics Global Electronics Retailer**,
    I enjoy building projects, analyzing real-world data, and sharing insights through GitHub and LinkedIn. 
    
   📬 Let’s Connect: <a href="https://www.linkedin.com/in/liza-deka-869473369/">LinkedIn</a>
+
 
 ⭐ If you found this project helpful or interesting, feel free to star the repository!
